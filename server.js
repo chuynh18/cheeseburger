@@ -4,7 +4,6 @@
 
 var express = require("express");
 var bodyParser = require("body-parser");
-var methodOverride = require("method-override");
 var exphbs = require("express-handlebars");
 
 // ============================= EXPRESS.js setup =============================
@@ -12,6 +11,8 @@ var exphbs = require("express-handlebars");
 // set up Express.js
 var app = express();
 var PORT = process.env.PORT || 8080; // so that I can deploy to Heroku or test locally on port 8080
+
+app.use(express.static("public"));
 
 // set up Express.js to handle data parsing
 app.use(bodyParser.urlencoded({ extended: true }));

@@ -3,8 +3,14 @@
 var connection = require("./connection");
 
 var orm = {
-    selectAll: function() {
-        // code here
+    selectAll: function(table, cb) {
+        var queryString = `SELECT * FROM ${table}`;
+        connection.query(queryString, function(err, res) {
+            if (err) {
+                throw err;
+            }
+            cb(res);
+        })
     },
 
     insertOne: function() {
@@ -15,3 +21,5 @@ var orm = {
         // code here
     },
 };
+
+module.exports = orm;
