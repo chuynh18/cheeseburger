@@ -3,8 +3,11 @@
 <h2>Freshly made burgers waiting to be eaten</h2>
 
 <ul>
+  {{!-- burgers comes from res.render in burger_controller.js --}}
   {{#each burgers}}
+  {{!-- devoured is a column in the burgers table --}}
     {{#unless devoured}}
+    {{!-- it uses the value of devoured to pass eat = true or false as appropriate --}}
       {{> burgers/burger-block eat=true}}
     {{/unless}}
   {{/each}}
@@ -29,9 +32,6 @@
   </div>
 
   <div class="form-group">
-    <label for="eaten">Eaten?</label><br>
-    <input type="radio" name="eaten" value="1" checked> Eaten!  Why would you want to create an eaten burger?<br>
-    <input type="radio" name="eaten" value="0"> Not yet eaten...
   </div>
 
   <button type="submit">Add Burger</button>

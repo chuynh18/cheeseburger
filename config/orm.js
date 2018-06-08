@@ -10,11 +10,17 @@ var orm = {
                 throw err;
             }
             cb(res);
-        })
+        });
     },
 
-    insertOne: function() {
-        // code here
+    insertOne: function(table, burgerName, cb) {
+        var queryString = `INSERT INTO ${table} (burger_name) VALUES ("${burgerName}")`;
+        connection.query(queryString, function(err, res) {
+            if (err) {
+                throw err;
+            }
+            cb(res);
+        });
     },
 
     updateOne: function() {
