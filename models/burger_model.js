@@ -3,16 +3,26 @@
 var orm = require("../config/orm");
 
 var burger = {
-    displayAll: function(callback) {
-        orm.selectAll("burgers", function(response) {
+    displayAll: callback => {
+        orm.selectAll("burgers", response => {
             callback(response);
         })
     },
-    insertBurger: function(burgerName, callback) {
-        orm.insertOne("burgers", burgerName, function(response) {
+    insertBurger: (burgerName, callback) => {
+        orm.insertOne("burgers", burgerName, response => {
+            callback(response);
+        });
+    },
+    eatBurger: (idNum, callback) => {
+        orm.updateOne("burgers", idNum, response => {
+            callback(response);
+        });
+    },
+    digestBurger: (idNum, callback) => {
+        orm.deleteOne("burgers", idNum, response => {
             callback(response);
         });
     }
-}
+};
 
 module.exports = burger;
