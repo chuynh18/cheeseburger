@@ -2,11 +2,11 @@
 	{{!-- burger_name is the name of a column table --}}
 	{{burger_name}} 
 	{{!-- eat comes from index.handlebars, which gets eat being true or false from the devoured column --}}
-	{{#if eat}}<button class="change-eaten" data-id="{{id}}" data-neweat="{{eat}}">
+	{{#if eat}}<button class="change-eaten" id="{{id}}">
 		Eat!
 	</button>{{/if}}
 
-	<button class="delete-burger" data-id="{{this.id}}">
+	<button class="delete-burger" id="{{id}}">
         {{#if eat}}Delete without eating{{else}}Delete{{/if}}
     </button>
 </li>
