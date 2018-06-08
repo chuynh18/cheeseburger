@@ -16,10 +16,10 @@ router.get("/", (req, res) => {
 });
 
 // create a burger
-// expects x-www-form-urlencoded {burgerName: 'name of burger here'} and sends back id (in database)
+// expects x-www-form-urlencoded {burgerName: nameOfBurger} and sends back id (in database)
 router.post("/api/burgers", (req, res) => {
     burger.insertBurger(req.body.burgerName, response => {
-        // console.log(response.insertId);
+        console.log(req.body);
         res.json(response.insertId);
     });
 });

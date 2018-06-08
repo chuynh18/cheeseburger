@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
     for (var i = 0; i < eatButtons.length; i++) {
         // on clicking the eat button, we send the appropriate service call
         eatButtons[i].addEventListener("click", function() {
-            console.log(this.id);
+            console.log(`Eating burger with id of ${this.id}`);
             xhr.open("PUT", `/api/burgers/${this.id}`);
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhr.send();
@@ -38,11 +38,21 @@ document.addEventListener("DOMContentLoaded", function() {
     // attach event handlers to all delete buttons
     for (var i = 0; i < deleteButtons.length; i++) {
         deleteButtons[i].addEventListener("click", function() {
-            console.log(this.id);
+            console.log(`Deleting burger with id of ${this.id}`);
             xhr.open("DELETE", `/api/burgers/${this.id}`);
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhr.send();
         })
     }
+
+    // ========== attach event handler to create burger button ==========
+    document.getElementById("addBurger").addEventListener("click", function() {
+        var newBurgerName = document.getElementById("newBurger").value;
+        xhr.open("POST", "/api/burgers");
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send(`burgerName=${newBurgerName}`);
+        console.log(newBurgerName);
+        document.getElementById("newBurger").value = "";
+    })
 
 });
